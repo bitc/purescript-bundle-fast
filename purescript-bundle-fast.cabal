@@ -6,6 +6,7 @@ version:             0.1.0.0
 synopsis:            Bundles compiled PureScript modules for the browser (fast development alternative to psc-bundle)
 -- description:         
 homepage:            https://github.com/bitc/purescript-bundle-fast
+bug-reports:         https://github.com/bitc/purescript-bundle-fast/issues
 license:             MIT
 license-file:        LICENSE
 author:              Bit Connor
