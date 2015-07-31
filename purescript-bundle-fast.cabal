@@ -17,6 +17,10 @@ build-type:          Simple
 -- extra-source-files:  
 cabal-version:       >=1.10
 
+source-repository head
+  type:                git
+  location:            git://github.com/bitc/purescript-bundle-fast.git
+
 executable psc-bundle-fast
   main-is:             Main.hs
   -- other-modules:       
