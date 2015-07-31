@@ -3,7 +3,7 @@
 
 name:                purescript-bundle-fast
 version:             0.1.0.0
-synopsis:            Bundles compiled PureScript modules for the browser (fast alt. to psc-bundle)
+synopsis:            A fast alternative to Purescript's `psc-bundle` to be used during development
 -- description:         
 homepage:            https://github.com/bitc/purescript-bundle-fast
 bug-reports:         https://github.com/bitc/purescript-bundle-fast/issues
