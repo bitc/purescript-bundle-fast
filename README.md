@@ -66,7 +66,7 @@ First, use `psc` as usual to compile your program:
         --ffi './src/**/*.js' \
         -o output
 
-Now, just as a refresher, here is how we'd use the regular `psc-bundle`
+Now, just for a comparison, here is how we'd use the regular `psc-bundle`:
 
     $ psc-bundle './output/**/*.js' -m Main --main Main -o app.js
 
