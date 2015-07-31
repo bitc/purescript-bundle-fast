@@ -48,6 +48,14 @@ They are even slower than PureScript's `psc-bundle`. Feel free to run your own
 benchmarks (and tell us the results!)
 
 
+## Installation
+
+You need GHC and cabal.
+
+    $ cabal update
+    $ cabal install purescript-bundle-fast
+
+
 ## Example Usage
 
 First, use `psc` as usual to compile your program:
