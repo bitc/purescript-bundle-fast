@@ -1,5 +1,5 @@
 name:                purescript-bundle-fast
-version:             0.1.0.0
+version:             0.1.0.1
 synopsis:            A fast alternative to Purescript's `psc-bundle` to be used during development
 description:         See README.md
 homepage:            https://github.com/bitc/purescript-bundle-fast
