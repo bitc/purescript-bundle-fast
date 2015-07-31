@@ -20,7 +20,8 @@ source-repository head
 
 executable psc-bundle-fast
   main-is:             Main.hs
-  -- other-modules:       
+  other-modules:       ProcessModule,
+                       ProcessRootModule
   other-extensions:    CPP, OverloadedStrings, RecordWildCards
 
   build-depends:       base ==4.*,
