@@ -67,7 +67,7 @@ processModule namespace modulename loadForeign ls = do
 
 -- Searches for a string formatted as:
 --
--- var Data_Maybe = require("Data.Maybe");
+-- var Data_Maybe = require("../Data.Maybe");
 --
 -- In this case will return: Just ("Data_Maybe", "Data.Maybe")
 --
@@ -80,9 +80,22 @@ parseImportStatement l =
             (varName, r2) -> case T.breakOn ");" (T.drop (T.length " = require(") r2) of
                 (_, "") -> Nothing
                 (quotedModName, _) -> case () of
-                    _ | T.head quotedModName == '"' && T.last quotedModName == '"' -> Just (varName, T.tail (T.init quotedModName))
-                    _ | T.head quotedModName == '\'' && T.last quotedModName == '\'' -> Just (varName, T.tail (T.init quotedModName))
+                    _ | isSurroundedBy '"' quotedModName -> Just (varName, removeRelativePath (removeQuotes quotedModName))
+                    _ | isSurroundedBy '\'' quotedModName -> Just (varName, removeRelativePath (removeQuotes quotedModName))
                     _ | otherwise -> Nothing
+
+    where
+    isSurroundedBy :: Char -> Text -> Bool
+    isSurroundedBy c t =
+        T.head t == c && T.last t == c
+
+    removeQuotes :: Text -> Text
+    removeQuotes =
+        T.tail . T.init
+
+    removeRelativePath :: Text -> Text
+    removeRelativePath t =
+        fromMaybe t (T.stripPrefix "../" t)
 
 formatImport :: Namespace -> (Text, Text) -> Text
 formatImport namespace (varName, modName) =

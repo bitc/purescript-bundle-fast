@@ -13,6 +13,7 @@ import System.IO
 import qualified Data.Text as T
 import qualified Data.Text.IO as T
 import qualified Data.Vector as V
+import Data.Monoid ((<>))
 
 import ProcessModule
 import ProcessRootModule
