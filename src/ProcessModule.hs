@@ -95,7 +95,7 @@ parseImportStatement l =
 
     removeRelativePath :: Text -> Text
     removeRelativePath t =
-        fromMaybe t (T.stripPrefix "../" t)
+         fromMaybe t (T.stripPrefix "../" t >>= T.stripSuffix "/index.js")
 
 formatImport :: Namespace -> (Text, Text) -> Text
 formatImport namespace (varName, modName) =
@@ -162,7 +162,7 @@ createImportSection namespace modulename ls (Just (firstIndex, numImports)) =
     next (createdLines, foundReqModules, needsForeign) line =
         case parseImportStatement line of
             Nothing -> (createdLines, foundReqModules, needsForeign)
-            Just (varName, reqModule) -> case reqModule == "./foreign" of
+            Just (varName, reqModule) -> case reqModule == "./foreign.js" of
                 True -> let newLine = formatImport namespace (varName, modulename) -- Load the `modulename` instead of trying to load "./foreign"
                     in (createdLines `V.snoc` newLine, foundReqModules, True)
                 False -> let newLine = formatImport namespace (varName, reqModule)
